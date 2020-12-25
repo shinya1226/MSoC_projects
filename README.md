@@ -1,5 +1,5 @@
 # MSoC_projects
-For MSoc course self-paced learing
+For MSoC course self-paced learing
 
 Projects resources from:
 
