@@ -1,0 +1,249 @@
+
+
+================================================================
+== Vivado HLS Report for 'luinv'
+================================================================
+* Date:           Wed Dec 23 17:33:33 2020
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        ProjINV
+* Solution:       solution2
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   8.00|     7.000|        1.00|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+--------+------+-------+----------+
+    |    Latency    |   Interval   | Pipeline |
+    |  min |   max  |  min |  max  |   Type   |
+    +------+--------+------+-------+----------+
+    |  8954|  167787|  4461|  64077| dataflow |
+    +------+--------+------+-------+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------+-----------+------+-------+------+-------+---------+
+        |              |           |    Latency   |   Interval   | Pipeline|
+        |   Instance   |   Module  |  min |  max  |  min |  max  |   Type  |
+        +--------------+-----------+------+-------+------+-------+---------+
+        |luinv_lup_U0  |luinv_lup  |  4460|  64076|  4460|  64076|   none  |
+        |luinv_mul_U0  |luinv_mul  |  3021|  46221|  3021|  46221|   none  |
+        |luinv_inv_U0  |luinv_inv  |  1471|  57488|  1471|  57488|   none  |
+        +--------------+-----------+------+-------+------+-------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|     62|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |       39|     72|   21330|  27039|
+|Memory           |        8|      -|      32|     10|
+|Multiplexer      |        -|      -|       -|     90|
+|Register         |        -|      -|      12|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |       47|     72|   21374|  27201|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |       16|     32|      20|     51|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +------------------------+----------------------+---------+-------+------+-------+
+    |        Instance        |        Module        | BRAM_18K| DSP48E|  FF  |  LUT  |
+    +------------------------+----------------------+---------+-------+------+-------+
+    |luinv_AXILiteS_s_axi_U  |luinv_AXILiteS_s_axi  |        0|      0|   196|    312|
+    |luinv_gmem_m_axi_U      |luinv_gmem_m_axi      |        2|      0|   512|    580|
+    |luinv_inv_U0            |luinv_inv             |        3|     20|  3613|   4744|
+    |luinv_lup_U0            |luinv_lup             |       14|     32|  9495|  11779|
+    |luinv_mul_U0            |luinv_mul             |       20|     20|  7514|   9624|
+    +------------------------+----------------------+---------+-------+------+-------+
+    |Total                   |                      |       39|     72| 21330|  27039|
+    +------------------------+----------------------+---------+-------+------+-------+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    +--------------+------------------+---------+----+----+------+-----+------+-------------+
+    |    Memory    |      Module      | BRAM_18K| FF | LUT| Words| Bits| Banks| W*Bits*Banks|
+    +--------------+------------------+---------+----+----+------+-----+------+-------------+
+    |LU_real_U     |luinv_LU_real     |        2|   0|   0|  1024|   32|     2|        65536|
+    |LU_imag_U     |luinv_LU_real     |        2|   0|   0|  1024|   32|     2|        65536|
+    |LUinv_real_U  |luinv_LUinv_real  |        2|   0|   0|  1024|   32|     2|        65536|
+    |LUinv_imag_U  |luinv_LUinv_real  |        2|   0|   0|  1024|   32|     2|        65536|
+    |P_U           |luinv_P           |        0|  16|   5|    33|    8|     2|          528|
+    |Padj_U        |luinv_P           |        0|  16|   5|    33|    8|     2|          528|
+    +--------------+------------------+---------+----+----+------+-----+------+-------------+
+    |Total         |                  |        8|  32|  10|  4162|  144|    12|       263200|
+    +--------------+------------------+---------+----+----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |luinv_lup_U0_ap_ready_count       |     +    |      0|  0|  10|           2|           1|
+    |luinv_mul_U0_ap_ready_count       |     +    |      0|  0|  10|           2|           1|
+    |ap_channel_done_LU_imag           |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_LU_real           |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_LUinv_imag        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_LUinv_real        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_P                 |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_Padj              |    and   |      0|  0|   2|           1|           1|
+    |ap_idle                           |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_ready                     |    and   |      0|  0|   2|           1|           1|
+    |luinv_inv_U0_ap_continue          |    and   |      0|  0|   2|           1|           1|
+    |luinv_inv_U0_ap_start             |    and   |      0|  0|   2|           1|           1|
+    |luinv_lup_U0_ap_continue          |    and   |      0|  0|   2|           1|           1|
+    |luinv_lup_U0_ap_start             |    and   |      0|  0|   2|           1|           1|
+    |luinv_mul_U0_ap_start             |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_LU_imag     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_LU_real     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_LUinv_imag  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_LUinv_real  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_P           |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_Padj        |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_luinv_lup_U0_ap_ready     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_luinv_mul_U0_ap_ready     |    or    |      0|  0|   2|           1|           1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0|  62|          25|          23|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_channel_write_LU_imag     |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_LU_real     |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_LUinv_imag  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_LUinv_real  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_P           |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_Padj        |   9|          2|    1|          2|
+    |ap_sync_reg_luinv_lup_U0_ap_ready     |   9|          2|    1|          2|
+    |ap_sync_reg_luinv_mul_U0_ap_ready     |   9|          2|    1|          2|
+    |luinv_lup_U0_ap_ready_count           |   9|          2|    2|          4|
+    |luinv_mul_U0_ap_ready_count           |   9|          2|    2|          4|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 |  90|         20|   12|         24|
+    +--------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------+---+----+-----+-----------+
+    |                 Name                 | FF| LUT| Bits| Const Bits|
+    +--------------------------------------+---+----+-----+-----------+
+    |ap_sync_reg_channel_write_LU_imag     |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_LU_real     |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_LUinv_imag  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_LUinv_real  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_P           |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_Padj        |  1|   0|    1|          0|
+    |ap_sync_reg_luinv_lup_U0_ap_ready     |  1|   0|    1|          0|
+    |ap_sync_reg_luinv_mul_U0_ap_ready     |  1|   0|    1|          0|
+    |luinv_lup_U0_ap_ready_count           |  2|   0|    2|          0|
+    |luinv_mul_U0_ap_ready_count           |  2|   0|    2|          0|
+    +--------------------------------------+---+----+-----+-----------+
+    |Total                                 | 12|   0|   12|          0|
+    +--------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+--------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  | Source Object|    C Type    |
++------------------------+-----+-----+------------+--------------+--------------+
+|s_axi_AXILiteS_AWVALID  |  in |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_AWREADY  | out |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_AWADDR   |  in |    6|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_WVALID   |  in |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_WREADY   | out |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_WDATA    |  in |   32|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_WSTRB    |  in |    4|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_ARVALID  |  in |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_ARREADY  | out |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_ARADDR   |  in |    6|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_RVALID   | out |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_RREADY   |  in |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_RDATA    | out |   32|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_RRESP    | out |    2|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_BVALID   | out |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_BREADY   |  in |    1|    s_axi   |   AXILiteS   |    scalar    |
+|s_axi_AXILiteS_BRESP    | out |    2|    s_axi   |   AXILiteS   |    scalar    |
+|ap_clk                  |  in |    1| ap_ctrl_hs |     luinv    | return value |
+|ap_rst_n                |  in |    1| ap_ctrl_hs |     luinv    | return value |
+|interrupt               | out |    1| ap_ctrl_hs |     luinv    | return value |
+|m_axi_gmem_AWVALID      | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWREADY      |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWADDR       | out |   32|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWID         | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWLEN        | out |    8|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWSIZE       | out |    3|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWBURST      | out |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWLOCK       | out |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWCACHE      | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWPROT       | out |    3|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWQOS        | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWREGION     | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_AWUSER       | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WVALID       | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WREADY       |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WDATA        | out |   32|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WSTRB        | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WLAST        | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WID          | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_WUSER        | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARVALID      | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARREADY      |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARADDR       | out |   32|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARID         | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARLEN        | out |    8|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARSIZE       | out |    3|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARBURST      | out |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARLOCK       | out |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARCACHE      | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARPROT       | out |    3|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARQOS        | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARREGION     | out |    4|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_ARUSER       | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RVALID       |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RREADY       | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RDATA        |  in |   32|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RLAST        |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RID          |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RUSER        |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_RRESP        |  in |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_BVALID       |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_BREADY       | out |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_BRESP        |  in |    2|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_BID          |  in |    1|    m_axi   |     gmem     |    pointer   |
+|m_axi_gmem_BUSER        |  in |    1|    m_axi   |     gmem     |    pointer   |
++------------------------+-----+-----+------------+--------------+--------------+
+
